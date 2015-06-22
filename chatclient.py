@@ -1,10 +1,10 @@
 #!/usr/bin/python 
 import socket, select, string, sys
 
-
 def prompt():
 	sys.stdout.write('<%s>' % name)
 	sys.stdout.flush()
+
 name = raw_input("Enter username: ")
 if len(sys.argv) < 3 :
 	print 'Usage: python chatclient.py [hostname] [port]'
@@ -20,8 +20,10 @@ try:
 except:
 	print 'Unable to connect. Exiting.'
 	sys.exit()
+
 print 'Connected to remote host.'
 prompt()
+
 while 1:
 	socket_list = [sys.stdin, s]
 	read_sockets, write_sockets, error_sockets = select.select(socket_list, [], [])

@@ -10,11 +10,11 @@ def broadcast_data (sock, message):
 			except:
 				socket.close()
 				CONNECTION_LIST.remove(socket)
+
 CONNECTION_LIST = []
 RECV_BUFFER = 4096
 PORT = 5000
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
 server_socket.bind(("0.0.0.0", PORT))
 server_socket.listen(5)
 CONNECTION_LIST.append(server_socket)
@@ -38,4 +38,5 @@ while 1:
 				print "Client (%s, %s) is offline" %addr
 				sock.close()
 				CONNECTION_LIST.remove(sock)
+
 server_socket.close()
